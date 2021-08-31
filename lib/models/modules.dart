@@ -4,6 +4,7 @@ class Modules {
   final String semestre;
   final String image;
   final String nom;
+  final String view;
 
   const Modules({
     required this.id,
@@ -11,6 +12,7 @@ class Modules {
     required this.semestre,
     required this.image,
     required this.nom,
+    required this.view,
   });
 
   factory Modules.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class Modules {
       semestre: json['semester'].toString(),
       image: json['image'].toString(),
       nom: json['name'].toString(),
+      view: json['view'].toString(),
     );
   }
 }

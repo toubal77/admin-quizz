@@ -96,8 +96,14 @@ class _AllModulesState extends State<AllModules> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: DataTable(
-                      columns: getColumns(
-                          ['id', 'annee', 'semestre', 'module', 'image']),
+                      columns: getColumns([
+                        'id',
+                        'annee',
+                        'semestre',
+                        'module',
+                        'image',
+                        'view'
+                      ]),
                       rows: getRows(modules!)),
                 ),
               ]),
@@ -134,6 +140,7 @@ class _AllModulesState extends State<AllModules> {
           module.semestre,
           module.nom,
           module.image,
+          module.view,
         ];
 
         return DataRow(

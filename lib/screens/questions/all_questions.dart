@@ -118,6 +118,7 @@ class _AllQuestionsState extends State<AllQuestions> {
                           'repo4',
                           'reponse 5',
                           'repo5',
+                          'explication',
                         ]),
                         rows: getRows(questions!)),
                   ),
@@ -167,6 +168,7 @@ class _AllQuestionsState extends State<AllQuestions> {
           question.respo4,
           question.rep5,
           question.respo5,
+          question.explication,
         ];
 
         return DataRow(
@@ -192,6 +194,7 @@ class _AllQuestionsState extends State<AllQuestions> {
                   'respo4': question.respo4,
                   'rep5': question.rep5,
                   'respo5': question.respo5,
+                  'explication': question.explication,
                 };
                 Navigator.of(context)
                     .pushNamed(EditQuestions.screenName, arguments: quest);

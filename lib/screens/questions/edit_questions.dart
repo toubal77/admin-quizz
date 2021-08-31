@@ -23,6 +23,7 @@ class _EditQuestionsState extends State<EditQuestions> {
   TextEditingController reponse3Controller = TextEditingController();
   TextEditingController reponse4Controller = TextEditingController();
   TextEditingController reponse5Controller = TextEditingController();
+  TextEditingController explicationController = TextEditingController();
   bool checkedValue1 = false;
   bool checkedValue2 = false;
   bool checkedValue3 = false;
@@ -42,6 +43,7 @@ class _EditQuestionsState extends State<EditQuestions> {
       semestreController.text = questions['annee'].toString();
       moduleController.text = questions['module'].toString();
       questionsController.text = questions['question'].toString();
+      explicationController.text = questions['explication'].toString();
       reponse5Controller.text = questions['rep5'].toString();
       reponse4Controller.text = questions['rep4'].toString();
       reponse3Controller.text = questions['rep3'].toString();
@@ -376,6 +378,23 @@ class _EditQuestionsState extends State<EditQuestions> {
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
                       SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(labelText: 'explication'),
+                        textInputAction: TextInputAction.next,
+                        controller: explicationController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'can not be empty';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          explicationController.text = value!;
+                        },
+                      ),
+                      SizedBox(
                         height: 30,
                       ),
                       GestureDetector(
@@ -407,6 +426,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                                 'answer4resp': checkedValue4.toString(),
                                 'answer5': reponse5Controller.text,
                                 'answer5resp': checkedValue5.toString(),
+                                'explic': explicationController.text,
                               });
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
@@ -444,6 +464,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                                 'answer4resp': checkedValue4.toString(),
                                 'answer5': reponse5Controller.text,
                                 'answer5resp': checkedValue5.toString(),
+                                'explic': explicationController.text,
                               });
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {

@@ -14,6 +14,7 @@ class Questions {
   final String respo4;
   final String rep5;
   final String respo5;
+  final String explication;
 
   const Questions({
     required this.id,
@@ -31,6 +32,7 @@ class Questions {
     required this.respo4,
     required this.rep5,
     required this.respo5,
+    required this.explication,
   });
   factory Questions.fromJson(Map<String, dynamic> json) {
     return Questions(
@@ -49,6 +51,7 @@ class Questions {
       respo4: json['resp4'].toString(),
       rep5: json['answer5'].toString(),
       respo5: json['resp5'].toString(),
+      explication: json['explication'].toString(),
     );
   }
 }

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "392201607110",
+    "project_id": "med-quizz",
+    "storage_bucket": "med-quizz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392201607110:android:173a4d1318acd491d084c7",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392201607110-0asjuigvdde7gniidippibeokk82i4fq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHeNZNItal2x3BQ3fz0UBYX8g0mEsDiQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392201607110-0asjuigvdde7gniidippibeokk82i4fq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392201607110:android:bbfbae5c646c7ea6d084c7",
+        "android_client_info": {
+          "package_name": "com.example.med_quizz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392201607110-0asjuigvdde7gniidippibeokk82i4fq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHeNZNItal2x3BQ3fz0UBYX8g0mEsDiQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392201607110-0asjuigvdde7gniidippibeokk82i4fq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-7410810465692328~7530412874"
+    }
+  ],
+  "configuration_version": "1"
+}

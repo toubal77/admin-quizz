@@ -72,15 +72,16 @@ class AllSuggestions extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(snapshot.data.docs[index]['username']),
+                      Text(
+                          'username: ' + snapshot.data.docs[index]['username']),
                       SizedBox(
                         height: 3,
                       ),
-                      Text(snapshot.data.docs[index]['time']),
+                      Text('time: ' + snapshot.data.docs[index]['time']),
                       SizedBox(
                         height: 10,
                       ),
-                      Text(snapshot.data.docs[index]['message']),
+                      Text('message: ' + snapshot.data.docs[index]['message']),
                     ],
                   ),
                 );

@@ -1,10 +1,5 @@
-import 'dart:convert';
-
-import 'package:admin_quizz/models/users.dart';
-import 'package:admin_quizz/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class AllUsers extends StatelessWidget {
   // List<User>? users = [];

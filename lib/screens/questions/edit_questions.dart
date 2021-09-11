@@ -30,7 +30,7 @@ class _EditQuestionsState extends State<EditQuestions> {
   bool checkedValue4 = false;
   bool checkedValue5 = false;
   bool isLoading = false;
-  final annee = ['1', '2'];
+  final annee = ['1', '2', '3', '4', '5', '6'];
   final semestre = ['1', '2'];
   String? value;
   String? value1;

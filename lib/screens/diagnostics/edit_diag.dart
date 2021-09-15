@@ -104,6 +104,7 @@ class _EditDiagState extends State<EditDiag> {
                         decoration: InputDecoration(labelText: 'Description'),
                         keyboardType: TextInputType.multiline,
                         maxLines: 6,
+                        maxLength: 20000,
                         controller: descriptionController,
                         validator: (value) {
                           if (value!.isEmpty) {

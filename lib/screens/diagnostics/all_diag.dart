@@ -28,14 +28,14 @@ class _AllDiagState extends State<AllDiag> {
     });
     diag!.clear();
     try {
-      var url =
+      final url =
           Uri.parse('https://rayanzinotblans.000webhostapp.com/get_diag.php');
-      var response = await http.get(url);
+      final response = await http.get(url);
       if (response.statusCode == 200) {
         print('seccus get diagnostics');
         final data = json.decode(response.body)["diag"];
         setState(() {
-          for (Map<String, dynamic> i in data) {
+          for (final Map<String, dynamic> i in data) {
             diag!.add(Diagnostics.fromJson(i));
           }
         });
@@ -58,48 +58,57 @@ class _AllDiagState extends State<AllDiag> {
       appBar: AppBar(
         title: Text('les Diagnostics'),
         leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (context) {
-                return HomePage();
-              }));
-            },
-            child: Icon(Icons.arrow_back)),
+          onTap: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) {
+                  return HomePage();
+                },
+              ),
+            );
+          },
+          child: Icon(Icons.arrow_back),
+        ),
       ),
       body: isLoading == false
           ? SingleChildScrollView(
-              child: Column(children: [
-                SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) {
-                        return EditDiag();
-                      }),
-                    );
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.grey,
-                    ),
-                    child: Center(
-                      child: Text('ajout un diagnostics'),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return EditDiag();
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 150,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.grey,
+                      ),
+                      child: Center(
+                        child: Text('ajout un diagnostics'),
+                      ),
                     ),
                   ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: DataTable(
                       columns:
                           getColumns(['id', 'tilte', 'descriptions', 'image']),
-                      rows: getRows(diag!)),
-                ),
-              ]),
+                      rows: getRows(diag!),
+                    ),
+                  ),
+                ],
+              ),
             )
           : Center(
               child: Column(
@@ -142,7 +151,7 @@ class _AllDiagState extends State<AllDiag> {
               Text('$cell'),
               showEditIcon: showEditIcon,
               onTap: () {
-                Map<String, String>? mod = {
+                final Map<String, String> mod = {
                   'id': diag.id,
                   'title': diag.title,
                   'description': diag.description,

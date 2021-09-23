@@ -29,14 +29,14 @@ class _AllModulesState extends State<AllModules> {
     });
     modules!.clear();
     try {
-      var url =
+      final url =
           Uri.parse('https://rayanzinotblans.000webhostapp.com/get_module.php');
-      var response = await http.get(url);
+      final response = await http.get(url);
       if (response.statusCode == 200) {
         print('seccus get module');
         final data = json.decode(response.body)["modules"];
         setState(() {
-          for (Map<String, dynamic> i in data) {
+          for (final Map<String, dynamic> i in data) {
             modules!.add(Modules.fromJson(i));
           }
         });
@@ -59,43 +59,50 @@ class _AllModulesState extends State<AllModules> {
       appBar: AppBar(
         title: Text('tous les Modules'),
         leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (context) {
-                return HomePage();
-              }));
-            },
-            child: Icon(Icons.arrow_back)),
+          onTap: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) {
+                  return HomePage();
+                },
+              ),
+            );
+          },
+          child: Icon(Icons.arrow_back),
+        ),
       ),
       body: isLoading == false
           ? SingleChildScrollView(
-              child: Column(children: [
-                SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) {
-                        return EditModult();
-                      }),
-                    );
-                  },
-                  child: Container(
-                    width: 150,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.grey,
-                    ),
-                    child: Center(
-                      child: Text('ajout un module'),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return EditModult();
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 150,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.grey,
+                      ),
+                      child: Center(
+                        child: Text('ajout un module'),
+                      ),
                     ),
                   ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: DataTable(
                       columns: getColumns([
                         'id',
                         'annee',
@@ -104,9 +111,11 @@ class _AllModulesState extends State<AllModules> {
                         'image',
                         'view'
                       ]),
-                      rows: getRows(modules!)),
-                ),
-              ]),
+                      rows: getRows(modules!),
+                    ),
+                  ),
+                ],
+              ),
             )
           : Center(
               child: Column(
@@ -150,7 +159,7 @@ class _AllModulesState extends State<AllModules> {
               Text('$cell'),
               showEditIcon: showEditIcon,
               onTap: () {
-                Map<String, String>? mod = {
+                final Map<String, String> mod = {
                   'id': module.id,
                   'annee': module.annee,
                   'semestre': module.semestre,

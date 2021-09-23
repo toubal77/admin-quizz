@@ -138,7 +138,7 @@ class _EditModultState extends State<EditModult> {
                             ),
                             items: semestre.map(buildMenuItem1).toList(),
                             onChanged: (value) => setState(() {
-                              this.value1 = value;
+                              value1 = value;
                               semestreController.text = value.toString();
                             }),
                           ),
@@ -223,7 +223,8 @@ class _EditModultState extends State<EditModult> {
                               } else {
                                 print('field create module');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             } else {
                               final url = Uri.parse(

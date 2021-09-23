@@ -1,8 +1,8 @@
 import 'package:admin_quizz/screens/diagnostics/all_diag.dart';
+import 'package:admin_quizz/screens/modules/all_modules.dart';
 import 'package:admin_quizz/screens/questions/all_questions.dart';
 import 'package:admin_quizz/screens/suggestions/all_suggestions.dart';
 import 'package:admin_quizz/screens/users/all_users.dart';
-import 'package:admin_quizz/screens/modules/all_modules.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';

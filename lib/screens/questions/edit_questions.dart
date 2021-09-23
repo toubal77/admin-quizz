@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class EditQuestions extends StatefulWidget {
-  static final screenName = "\EditQuestions";
+  static const screenName = "EditQuestions";
   @override
   _EditQuestionsState createState() => _EditQuestionsState();
 }
@@ -158,7 +158,6 @@ class _EditQuestionsState extends State<EditQuestions> {
                             onChanged: (value) => setState(() {
                               this.value = value;
                               anneeController.text = value.toString();
-                              print('leihgoier' + anneeController.text);
                             }),
                           ),
                         ),
@@ -185,9 +184,8 @@ class _EditQuestionsState extends State<EditQuestions> {
                             ),
                             items: semestre.map(buildMenuItem1).toList(),
                             onChanged: (value) => setState(() {
-                              this.value1 = value;
+                              value1 = value;
                               semestreController.text = value.toString();
-                              print('oirhgree  rg ' + semestreController.text);
                             }),
                           ),
                         ),
@@ -410,24 +408,28 @@ class _EditQuestionsState extends State<EditQuestions> {
                           try {
                             if (idController.text == 'null') {
                               final url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/create_question.php');
-                              final response = await http.post(url, body: {
-                                'module': moduleController.text,
-                                'semester': semestreController.text,
-                                'annee': anneeController.text,
-                                'qcm': questionsController.text,
-                                'answer1': reponse1Controller.text,
-                                'answer1resp': checkedValue1.toString(),
-                                'answer2': reponse2Controller.text,
-                                'answer2resp': checkedValue2.toString(),
-                                'answer3': reponse3Controller.text,
-                                'answer3resp': checkedValue3.toString(),
-                                'answer4': reponse4Controller.text,
-                                'answer4resp': checkedValue4.toString(),
-                                'answer5': reponse5Controller.text,
-                                'answer5resp': checkedValue5.toString(),
-                                'explic': explicationController.text,
-                              });
+                                'https://rayanzinotblans.000webhostapp.com/create_question.php',
+                              );
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'module': moduleController.text,
+                                  'semester': semestreController.text,
+                                  'annee': anneeController.text,
+                                  'qcm': questionsController.text,
+                                  'answer1': reponse1Controller.text,
+                                  'answer1resp': checkedValue1.toString(),
+                                  'answer2': reponse2Controller.text,
+                                  'answer2resp': checkedValue2.toString(),
+                                  'answer3': reponse3Controller.text,
+                                  'answer3resp': checkedValue3.toString(),
+                                  'answer4': reponse4Controller.text,
+                                  'answer4resp': checkedValue4.toString(),
+                                  'answer5': reponse5Controller.text,
+                                  'answer5resp': checkedValue5.toString(),
+                                  'explic': explicationController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).pushReplacement(
@@ -443,11 +445,13 @@ class _EditQuestionsState extends State<EditQuestions> {
                               } else {
                                 print('field create module');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             } else {
                               final url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/update_question.php');
+                                'https://rayanzinotblans.000webhostapp.com/update_question.php',
+                              );
                               final response = await http.post(
                                 url,
                                 body: {
@@ -481,8 +485,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(json
-                                          .decode(response.body)['message']),
+                                      content: Text(
+                                        json
+                                            .decode(response.body)['message']
+                                            .toString(),
+                                      ),
                                     ),
                                   );
                                   print(json.decode(response.body)['message']);
@@ -540,7 +547,8 @@ class _EditQuestionsState extends State<EditQuestions> {
                             });
                             try {
                               final url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/delete_question.php');
+                                'https://rayanzinotblans.000webhostapp.com/delete_question.php',
+                              );
                               final response = await http.post(
                                 url,
                                 body: {
@@ -559,8 +567,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(json
-                                          .decode(response.body)['message']),
+                                      content: Text(
+                                        json
+                                            .decode(response.body)['message']
+                                            .toString(),
+                                      ),
                                     ),
                                   );
                                   print(json.decode(response.body)['message']);

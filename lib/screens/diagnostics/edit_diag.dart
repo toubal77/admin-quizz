@@ -109,7 +109,7 @@ class _EditDiagState extends State<EditDiag> {
                         controller: descriptionController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Can\'t be empty';
+                            return "Can't be empty";
                           }
                           return null;
                         },
@@ -126,7 +126,7 @@ class _EditDiagState extends State<EditDiag> {
                         controller: imageController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Can\'t be empty';
+                            return "Can't be empty";
                           }
                           return null;
                         },
@@ -150,12 +150,16 @@ class _EditDiagState extends State<EditDiag> {
                           try {
                             if (idController.text == 'null') {
                               final url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/create_diag.php');
-                              final response = await http.post(url, body: {
-                                'title': titleController.text,
-                                'description': descriptionController.text,
-                                'image': imageController.text,
-                              });
+                                'https://rayanzinotblans.000webhostapp.com/create_diag.php',
+                              );
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'title': titleController.text,
+                                  'description': descriptionController.text,
+                                  'image': imageController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).pushReplacement(
@@ -171,11 +175,13 @@ class _EditDiagState extends State<EditDiag> {
                               } else {
                                 print('field create diag');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             } else {
                               final url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/update_diag.php');
+                                'https://rayanzinotblans.000webhostapp.com/update_diag.php',
+                              );
                               final response = await http.post(
                                 url,
                                 body: {
@@ -212,7 +218,8 @@ class _EditDiagState extends State<EditDiag> {
                                 );
                                 print('field create diag');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             }
                           } catch (e) {

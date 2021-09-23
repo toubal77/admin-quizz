@@ -34,9 +34,9 @@ class _EditQuestionsState extends State<EditQuestions> {
   final semestre = ['1', '2'];
   String? value;
   String? value1;
-
-  void didChangeDependencies() async {
-    Map? questions = ModalRoute.of(context)!.settings.arguments as Map?;
+  @override
+  Future<void> didChangeDependencies() async {
+    final Map? questions = ModalRoute.of(context)!.settings.arguments as Map?;
     if (questions != null) {
       idController.text = questions['id'].toString();
       anneeController.text = questions['semestre'].toString();
@@ -49,31 +49,31 @@ class _EditQuestionsState extends State<EditQuestions> {
       reponse3Controller.text = questions['rep3'].toString();
       reponse2Controller.text = questions['rep2'].toString();
       reponse1Controller.text = questions['rep1'].toString();
-      var value3 = questions['respo1'].toString();
+      final value3 = questions['respo1'].toString();
       if (value3 == 'true') {
         checkedValue1 = true;
       } else if (value3 == 'false') {
         checkedValue1 = false;
       }
-      var value4 = questions['respo2'].toString();
+      final value4 = questions['respo2'].toString();
       if (value4 == 'true') {
         checkedValue2 = true;
       } else if (value4 == 'false') {
         checkedValue2 = false;
       }
-      var value5 = questions['respo3'].toString();
+      final value5 = questions['respo3'].toString();
       if (value5 == 'true') {
         checkedValue3 = true;
       } else if (value5 == 'false') {
         checkedValue3 = false;
       }
-      var value6 = questions['respo4'].toString();
+      final value6 = questions['respo4'].toString();
       if (value6 == 'true') {
         checkedValue4 = true;
       } else if (value6 == 'false') {
         checkedValue4 = false;
       }
-      var value7 = questions['respo5'].toString();
+      final value7 = questions['respo5'].toString();
       if (value7 == 'true') {
         checkedValue5 = true;
       } else if (value7 == 'false') {
@@ -409,9 +409,9 @@ class _EditQuestionsState extends State<EditQuestions> {
                           });
                           try {
                             if (idController.text == 'null') {
-                              var url = Uri.parse(
+                              final url = Uri.parse(
                                   'https://rayanzinotblans.000webhostapp.com/create_question.php');
-                              var response = await http.post(url, body: {
+                              final response = await http.post(url, body: {
                                 'module': moduleController.text,
                                 'semester': semestreController.text,
                                 'annee': anneeController.text,
@@ -446,26 +446,29 @@ class _EditQuestionsState extends State<EditQuestions> {
                                     'Response status: ${response.statusCode}');
                               }
                             } else {
-                              var url = Uri.parse(
+                              final url = Uri.parse(
                                   'https://rayanzinotblans.000webhostapp.com/update_question.php');
-                              var response = await http.post(url, body: {
-                                'id_qcm': idController.text,
-                                'module': moduleController.text,
-                                'semester': semestreController.text,
-                                'annee': anneeController.text,
-                                'qcm': questionsController.text,
-                                'answer1': reponse1Controller.text,
-                                'answer1resp': checkedValue1.toString(),
-                                'answer2': reponse2Controller.text,
-                                'answer2resp': checkedValue2.toString(),
-                                'answer3': reponse3Controller.text,
-                                'answer3resp': checkedValue3.toString(),
-                                'answer4': reponse4Controller.text,
-                                'answer4resp': checkedValue4.toString(),
-                                'answer5': reponse5Controller.text,
-                                'answer5resp': checkedValue5.toString(),
-                                'explic': explicationController.text,
-                              });
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'id_qcm': idController.text,
+                                  'module': moduleController.text,
+                                  'semester': semestreController.text,
+                                  'annee': anneeController.text,
+                                  'qcm': questionsController.text,
+                                  'answer1': reponse1Controller.text,
+                                  'answer1resp': checkedValue1.toString(),
+                                  'answer2': reponse2Controller.text,
+                                  'answer2resp': checkedValue2.toString(),
+                                  'answer3': reponse3Controller.text,
+                                  'answer3resp': checkedValue3.toString(),
+                                  'answer4': reponse4Controller.text,
+                                  'answer4resp': checkedValue4.toString(),
+                                  'answer5': reponse5Controller.text,
+                                  'answer5resp': checkedValue5.toString(),
+                                  'explic': explicationController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).pushReplacement(
@@ -493,7 +496,8 @@ class _EditQuestionsState extends State<EditQuestions> {
                                 );
                                 print('field create module');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             }
                           } catch (e) {
@@ -516,7 +520,9 @@ class _EditQuestionsState extends State<EditQuestions> {
                           decoration: BoxDecoration(
                             color: Colors.grey,
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.grey, width: 1),
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
                           ),
                           child: Center(
                             child: Text('Confirme'),
@@ -533,11 +539,14 @@ class _EditQuestionsState extends State<EditQuestions> {
                               isLoading = true;
                             });
                             try {
-                              var url = Uri.parse(
+                              final url = Uri.parse(
                                   'https://rayanzinotblans.000webhostapp.com/delete_question.php');
-                              var response = await http.post(url, body: {
-                                'id': idController.text,
-                              });
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'id': idController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).pushReplacement(
@@ -564,7 +573,8 @@ class _EditQuestionsState extends State<EditQuestions> {
                                 );
                                 print('field delete question');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -585,7 +595,9 @@ class _EditQuestionsState extends State<EditQuestions> {
                             decoration: BoxDecoration(
                               color: Colors.red.shade300,
                               borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.grey, width: 1),
+                              border: Border.all(
+                                color: Colors.grey,
+                              ),
                             ),
                             child: Center(
                               child: Text('Delete'),

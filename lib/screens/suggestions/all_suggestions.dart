@@ -56,7 +56,7 @@ class AllSuggestions extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
-              itemCount: snapshot.data.docs!.length,
+              itemCount: int.parse(snapshot.data.docs!.length.toString()),
               itemBuilder: (context, index) {
                 return Container(
                   margin: EdgeInsets.all(10),
@@ -66,22 +66,22 @@ class AllSuggestions extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       color: Colors.black,
-                      width: 1,
                     ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                          'username: ' + snapshot.data.docs[index]['username']),
+                        'username: ${snapshot.data.docs[index]['username']}',
+                      ),
                       SizedBox(
                         height: 3,
                       ),
-                      Text('time: ' + snapshot.data.docs[index]['time']),
+                      Text('time: ${snapshot.data.docs[index]['time']}'),
                       SizedBox(
                         height: 10,
                       ),
-                      Text('message: ' + snapshot.data.docs[index]['message']),
+                      Text('message: ${snapshot.data.docs[index]['message']}'),
                     ],
                   ),
                 );

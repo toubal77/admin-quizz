@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class EditDiag extends StatefulWidget {
-  static final screenName = "\EditDiag";
+  static const screenName = "EditDiag";
   @override
   _EditDiagState createState() => _EditDiagState();
 }
@@ -19,8 +19,9 @@ class _EditDiagState extends State<EditDiag> {
   TextEditingController imageController = TextEditingController();
   bool isLoading = false;
 
-  void didChangeDependencies() async {
-    Map? diagnostics = ModalRoute.of(context)!.settings.arguments as Map?;
+  @override
+  Future<void> didChangeDependencies() async {
+    final Map? diagnostics = ModalRoute.of(context)!.settings.arguments as Map?;
     if (diagnostics != null) {
       idController.text = diagnostics['id'].toString();
       titleController.text = diagnostics['title'].toString();
@@ -148,9 +149,9 @@ class _EditDiagState extends State<EditDiag> {
                           });
                           try {
                             if (idController.text == 'null') {
-                              var url = Uri.parse(
+                              final url = Uri.parse(
                                   'https://rayanzinotblans.000webhostapp.com/create_diag.php');
-                              var response = await http.post(url, body: {
+                              final response = await http.post(url, body: {
                                 'title': titleController.text,
                                 'description': descriptionController.text,
                                 'image': imageController.text,
@@ -173,14 +174,17 @@ class _EditDiagState extends State<EditDiag> {
                                     'Response status: ${response.statusCode}');
                               }
                             } else {
-                              var url = Uri.parse(
+                              final url = Uri.parse(
                                   'https://rayanzinotblans.000webhostapp.com/update_diag.php');
-                              var response = await http.post(url, body: {
-                                'id_diag': idController.text,
-                                'title': titleController.text,
-                                'description': descriptionController.text,
-                                'image': imageController.text,
-                              });
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'id_diag': idController.text,
+                                  'title': titleController.text,
+                                  'description': descriptionController.text,
+                                  'image': imageController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
@@ -191,8 +195,11 @@ class _EditDiagState extends State<EditDiag> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(json
-                                          .decode(response.body)['message']),
+                                      content: Text(
+                                        json
+                                            .decode(response.body)['message']
+                                            .toString(),
+                                      ),
                                     ),
                                   );
                                   print(json.decode(response.body)['message']);
@@ -227,7 +234,9 @@ class _EditDiagState extends State<EditDiag> {
                           decoration: BoxDecoration(
                             color: Colors.grey,
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.grey, width: 1),
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
                           ),
                           child: Center(
                             child: Text('Confirme'),
@@ -244,11 +253,15 @@ class _EditDiagState extends State<EditDiag> {
                               isLoading = true;
                             });
                             try {
-                              var url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/delete_diag.php');
-                              var response = await http.post(url, body: {
-                                'id': idController.text,
-                              });
+                              final url = Uri.parse(
+                                'https://rayanzinotblans.000webhostapp.com/delete_diag.php',
+                              );
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'id': idController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
@@ -259,8 +272,11 @@ class _EditDiagState extends State<EditDiag> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(json
-                                          .decode(response.body)['message']),
+                                      content: Text(
+                                        json
+                                            .decode(response.body)['message']
+                                            .toString(),
+                                      ),
                                     ),
                                   );
                                   print(json.decode(response.body)['message']);
@@ -273,7 +289,8 @@ class _EditDiagState extends State<EditDiag> {
                                 );
                                 print('field delete diag');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -294,7 +311,9 @@ class _EditDiagState extends State<EditDiag> {
                             decoration: BoxDecoration(
                               color: Colors.red.shade300,
                               borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.grey, width: 1),
+                              border: Border.all(
+                                color: Colors.grey,
+                              ),
                             ),
                             child: Center(
                               child: Text('Delete'),

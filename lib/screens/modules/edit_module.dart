@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class EditModult extends StatefulWidget {
-  static final screenName = "\EditModule";
+  static const screenName = "EditModule";
   @override
   _EditModultState createState() => _EditModultState();
 }
@@ -23,8 +23,9 @@ class _EditModultState extends State<EditModult> {
   final semestre = ['1', '2'];
   String? value;
   String? value1;
-  void didChangeDependencies() async {
-    Map? module = ModalRoute.of(context)!.settings.arguments as Map?;
+  @override
+  Future<void> didChangeDependencies() async {
+    final Map? module = ModalRoute.of(context)!.settings.arguments as Map?;
     if (module != null) {
       idController.text = module['id'].toString();
       anneeController.text = module['annee'].toString();
@@ -195,14 +196,18 @@ class _EditModultState extends State<EditModult> {
                           });
                           try {
                             if (idController.text == 'null') {
-                              var url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/create_module.php');
-                              var response = await http.post(url, body: {
-                                'name': moduleController.text,
-                                'semester': semestreController.text,
-                                'annee': anneeController.text,
-                                'image': imageController.text,
-                              });
+                              final url = Uri.parse(
+                                'https://rayanzinotblans.000webhostapp.com/create_module.php',
+                              );
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'name': moduleController.text,
+                                  'semester': semestreController.text,
+                                  'annee': anneeController.text,
+                                  'image': imageController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).pushReplacement(
@@ -221,15 +226,19 @@ class _EditModultState extends State<EditModult> {
                                     'Response status: ${response.statusCode}');
                               }
                             } else {
-                              var url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/update_module.php');
-                              var response = await http.post(url, body: {
-                                'id_mod': idController.text,
-                                'name': moduleController.text,
-                                'semester': semestreController.text,
-                                'annee': anneeController.text,
-                                'image': imageController.text,
-                              });
+                              final url = Uri.parse(
+                                'https://rayanzinotblans.000webhostapp.com/update_module.php',
+                              );
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'id_mod': idController.text,
+                                  'name': moduleController.text,
+                                  'semester': semestreController.text,
+                                  'annee': anneeController.text,
+                                  'image': imageController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
@@ -240,8 +249,11 @@ class _EditModultState extends State<EditModult> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(json
-                                          .decode(response.body)['message']),
+                                      content: Text(
+                                        json
+                                            .decode(response.body)['message']
+                                            .toString(),
+                                      ),
                                     ),
                                   );
                                   print(json.decode(response.body)['message']);
@@ -255,7 +267,8 @@ class _EditModultState extends State<EditModult> {
                                 );
                                 print('field create module');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             }
                           } catch (e) {
@@ -278,7 +291,9 @@ class _EditModultState extends State<EditModult> {
                           decoration: BoxDecoration(
                             color: Colors.grey,
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.grey, width: 1),
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
                           ),
                           child: Center(
                             child: Text('Confirme'),
@@ -295,11 +310,15 @@ class _EditModultState extends State<EditModult> {
                               isLoading = true;
                             });
                             try {
-                              var url = Uri.parse(
-                                  'https://rayanzinotblans.000webhostapp.com/delete_module.php');
-                              var response = await http.post(url, body: {
-                                'id': idController.text,
-                              });
+                              final url = Uri.parse(
+                                'https://rayanzinotblans.000webhostapp.com/delete_module.php',
+                              );
+                              final response = await http.post(
+                                url,
+                                body: {
+                                  'id': idController.text,
+                                },
+                              );
                               if (response.statusCode == 200) {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
@@ -310,8 +329,11 @@ class _EditModultState extends State<EditModult> {
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(json
-                                          .decode(response.body)['message']),
+                                      content: Text(
+                                        json
+                                            .decode(response.body)['message']
+                                            .toString(),
+                                      ),
                                     ),
                                   );
                                   print(json.decode(response.body)['message']);
@@ -324,7 +346,8 @@ class _EditModultState extends State<EditModult> {
                                 );
                                 print('field delete module');
                                 print(
-                                    'Response status: ${response.statusCode}');
+                                  'Response status: ${response.statusCode}',
+                                );
                               }
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -345,7 +368,9 @@ class _EditModultState extends State<EditModult> {
                             decoration: BoxDecoration(
                               color: Colors.red.shade300,
                               borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.grey, width: 1),
+                              border: Border.all(
+                                color: Colors.grey,
+                              ),
                             ),
                             child: Center(
                               child: Text('Delete'),

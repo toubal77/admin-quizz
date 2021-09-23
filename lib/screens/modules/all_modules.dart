@@ -33,6 +33,7 @@ class _AllModulesState extends State<AllModules> {
           Uri.parse('https://rayanzinotblans.000webhostapp.com/get_module.php');
       final response = await http.get(url);
       if (response.statusCode == 200) {
+        // ignore: avoid_print
         print('seccus get module');
         final data = json.decode(response.body)["modules"];
         setState(() {
@@ -41,11 +42,15 @@ class _AllModulesState extends State<AllModules> {
           }
         });
       } else {
+        // ignore: avoid_print
         print('field get module');
+        // ignore: avoid_print
         print('Response status: ${response.statusCode}');
       }
     } catch (e) {
+      // ignore: avoid_print
       print('field to try get module');
+      // ignore: avoid_print
       print(e.toString());
     }
     setState(() {
@@ -57,25 +62,25 @@ class _AllModulesState extends State<AllModules> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('tous les Modules'),
+        title: const Text('tous les Modules'),
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
-                  return HomePage();
+                  return const HomePage();
                 },
               ),
             );
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: isLoading == false
           ? SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   GestureDetector(
@@ -83,7 +88,7 @@ class _AllModulesState extends State<AllModules> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return EditModult();
+                            return const EditModult();
                           },
                         ),
                       );
@@ -95,7 +100,7 @@ class _AllModulesState extends State<AllModules> {
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.grey,
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text('ajout un module'),
                       ),
                     ),
@@ -123,11 +128,11 @@ class _AllModulesState extends State<AllModules> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.4,
                   ),
-                  CircularProgressIndicator(),
-                  SizedBox(
+                  const CircularProgressIndicator(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Chargement...'),
+                  const Text('Chargement...'),
                 ],
               ),
             ),

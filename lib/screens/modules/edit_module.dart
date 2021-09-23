@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 class EditModult extends StatefulWidget {
   static const screenName = "EditModule";
+
+  const EditModult({Key? key}) : super(key: key);
   @override
   _EditModultState createState() => _EditModultState();
 }
@@ -44,7 +46,7 @@ class _EditModultState extends State<EditModult> {
         value: item,
         child: Text(
           item,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -54,7 +56,7 @@ class _EditModultState extends State<EditModult> {
         value: item,
         child: Text(
           item,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -64,19 +66,19 @@ class _EditModultState extends State<EditModult> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit modules'),
+        title: const Text('Edit modules'),
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
-                  return AllModules();
+                  return const AllModules();
                 },
               ),
             );
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: isLoading == false
@@ -88,13 +90,13 @@ class _EditModultState extends State<EditModult> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text('annee'),
+                      const Text('annee'),
                       Container(
                         width: 300,
-                        margin: EdgeInsets.all(12),
+                        margin: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: Colors.black, width: 2),
@@ -104,7 +106,7 @@ class _EditModultState extends State<EditModult> {
                             value: value,
                             isExpanded: true,
                             iconSize: 36,
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_drop_down,
                               color: Colors.black,
                             ),
@@ -116,13 +118,13 @@ class _EditModultState extends State<EditModult> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text('Semestre'),
+                      const Text('Semestre'),
                       Container(
                         width: 300,
-                        margin: EdgeInsets.all(12),
+                        margin: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: Colors.black, width: 2),
@@ -132,7 +134,7 @@ class _EditModultState extends State<EditModult> {
                             value: value1,
                             isExpanded: true,
                             iconSize: 36,
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_drop_down,
                               color: Colors.black,
                             ),
@@ -144,11 +146,11 @@ class _EditModultState extends State<EditModult> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'module'),
+                        decoration: const InputDecoration(labelText: 'module'),
                         textInputAction: TextInputAction.next,
                         controller: moduleController,
                         validator: (value) {
@@ -161,11 +163,11 @@ class _EditModultState extends State<EditModult> {
                           moduleController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'image'),
+                        decoration: const InputDecoration(labelText: 'image'),
                         textInputAction: TextInputAction.next,
                         controller: imageController,
                         validator: (value) {
@@ -181,7 +183,7 @@ class _EditModultState extends State<EditModult> {
                           imageController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       GestureDetector(
@@ -213,15 +215,18 @@ class _EditModultState extends State<EditModult> {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return AllModules();
+                                        return const AllModules();
                                       },
                                     ),
                                   );
                                 } else {
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
+                                // ignore: avoid_print
                                 print('field create module');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
@@ -244,7 +249,7 @@ class _EditModultState extends State<EditModult> {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => AllModules(),
+                                      builder: (context) => const AllModules(),
                                     ),
                                   );
                                 } else {
@@ -257,16 +262,19 @@ class _EditModultState extends State<EditModult> {
                                       ),
                                     ),
                                   );
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content:
                                         Text('field create / update module'),
                                   ),
                                 );
+                                // ignore: avoid_print
                                 print('field create module');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
@@ -274,12 +282,14 @@ class _EditModultState extends State<EditModult> {
                             }
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content:
                                     Text('field try create/ update module'),
                               ),
                             );
+                            // ignore: avoid_print
                             print('field to try create module');
+                            // ignore: avoid_print
                             print(e.toString());
                           }
                           setState(() {
@@ -296,12 +306,12 @@ class _EditModultState extends State<EditModult> {
                               color: Colors.grey,
                             ),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text('Confirme'),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                       if (idController.text != 'null')
@@ -324,7 +334,7 @@ class _EditModultState extends State<EditModult> {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => AllModules(),
+                                      builder: (context) => const AllModules(),
                                     ),
                                   );
                                 } else {
@@ -337,26 +347,31 @@ class _EditModultState extends State<EditModult> {
                                       ),
                                     ),
                                   );
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('field delete module'),
                                   ),
                                 );
+                                // ignore: avoid_print
                                 print('field delete module');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
                               }
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text('field try delete module'),
                                 ),
                               );
+                              // ignore: avoid_print
                               print('field to try delete module');
+                              // ignore: avoid_print
                               print(e.toString());
                             }
                             setState(() {
@@ -373,7 +388,7 @@ class _EditModultState extends State<EditModult> {
                                 color: Colors.grey,
                               ),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Text('Delete'),
                             ),
                           ),
@@ -389,11 +404,11 @@ class _EditModultState extends State<EditModult> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.4,
                   ),
-                  CircularProgressIndicator(),
-                  SizedBox(
+                  const CircularProgressIndicator(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Chargement...'),
+                  const Text('Chargement...'),
                 ],
               ),
             ),

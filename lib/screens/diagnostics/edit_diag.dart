@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 class EditDiag extends StatefulWidget {
   static const screenName = "EditDiag";
+
+  const EditDiag({Key? key}) : super(key: key);
   @override
   _EditDiagState createState() => _EditDiagState();
 }
@@ -37,7 +39,7 @@ class _EditDiagState extends State<EditDiag> {
         value: item,
         child: Text(
           item,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -47,7 +49,7 @@ class _EditDiagState extends State<EditDiag> {
         value: item,
         child: Text(
           item,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -57,19 +59,19 @@ class _EditDiagState extends State<EditDiag> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Diagnostics'),
+        title: const Text('Edit Diagnostics'),
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
-                  return AllDiag();
+                  return const AllDiag();
                 },
               ),
             );
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: isLoading == false
@@ -81,11 +83,11 @@ class _EditDiagState extends State<EditDiag> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'title'),
+                        decoration: const InputDecoration(labelText: 'title'),
                         textInputAction: TextInputAction.next,
                         controller: titleController,
                         validator: (value) {
@@ -98,11 +100,12 @@ class _EditDiagState extends State<EditDiag> {
                           titleController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'Description'),
+                        decoration:
+                            const InputDecoration(labelText: 'Description'),
                         keyboardType: TextInputType.multiline,
                         maxLines: 6,
                         maxLength: 20000,
@@ -117,11 +120,11 @@ class _EditDiagState extends State<EditDiag> {
                           descriptionController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'image'),
+                        decoration: const InputDecoration(labelText: 'image'),
                         textInputAction: TextInputAction.next,
                         controller: imageController,
                         validator: (value) {
@@ -134,7 +137,7 @@ class _EditDiagState extends State<EditDiag> {
                           imageController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       GestureDetector(
@@ -165,15 +168,18 @@ class _EditDiagState extends State<EditDiag> {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return AllDiag();
+                                        return const AllDiag();
                                       },
                                     ),
                                   );
                                 } else {
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
+                                // ignore: avoid_print
                                 print('field create diag');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
@@ -195,7 +201,7 @@ class _EditDiagState extends State<EditDiag> {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => AllDiag(),
+                                      builder: (context) => const AllDiag(),
                                     ),
                                   );
                                 } else {
@@ -208,15 +214,18 @@ class _EditDiagState extends State<EditDiag> {
                                       ),
                                     ),
                                   );
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('field create / update diag'),
                                   ),
                                 );
+                                // ignore: avoid_print
                                 print('field create diag');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
@@ -224,11 +233,13 @@ class _EditDiagState extends State<EditDiag> {
                             }
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content: Text('field try create/ update diag'),
                               ),
                             );
+                            // ignore: avoid_print
                             print('field to try create diag');
+                            // ignore: avoid_print
                             print(e.toString());
                           }
                           setState(() {
@@ -245,12 +256,12 @@ class _EditDiagState extends State<EditDiag> {
                               color: Colors.grey,
                             ),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text('Confirme'),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                       if (idController.text != 'null')
@@ -273,7 +284,7 @@ class _EditDiagState extends State<EditDiag> {
                                 if (json.decode(response.body)['status']) {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => AllDiag(),
+                                      builder: (context) => const AllDiag(),
                                     ),
                                   );
                                 } else {
@@ -286,26 +297,31 @@ class _EditDiagState extends State<EditDiag> {
                                       ),
                                     ),
                                   );
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('field delete diag'),
                                   ),
                                 );
+                                // ignore: avoid_print
                                 print('field delete diag');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
                               }
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text('field try delete diag'),
                                 ),
                               );
+                              // ignore: avoid_print
                               print('field to try delete diag');
+                              // ignore: avoid_print
                               print(e.toString());
                             }
                             setState(() {
@@ -322,7 +338,7 @@ class _EditDiagState extends State<EditDiag> {
                                 color: Colors.grey,
                               ),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Text('Delete'),
                             ),
                           ),
@@ -338,11 +354,11 @@ class _EditDiagState extends State<EditDiag> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.4,
                   ),
-                  CircularProgressIndicator(),
-                  SizedBox(
+                  const CircularProgressIndicator(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Chargement...'),
+                  const Text('Chargement...'),
                 ],
               ),
             ),

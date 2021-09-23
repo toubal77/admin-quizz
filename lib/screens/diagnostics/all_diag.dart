@@ -32,6 +32,7 @@ class _AllDiagState extends State<AllDiag> {
           Uri.parse('https://rayanzinotblans.000webhostapp.com/get_diag.php');
       final response = await http.get(url);
       if (response.statusCode == 200) {
+        // ignore: avoid_print
         print('seccus get diagnostics');
         final data = json.decode(response.body)["diag"];
         setState(() {
@@ -40,11 +41,15 @@ class _AllDiagState extends State<AllDiag> {
           }
         });
       } else {
+        // ignore: avoid_print
         print('field get diagnostics');
+        // ignore: avoid_print
         print('Response status: ${response.statusCode}');
       }
     } catch (e) {
+      // ignore: avoid_print
       print('field to try get diagnostics');
+      // ignore: avoid_print
       print(e.toString());
     }
     setState(() {
@@ -56,25 +61,25 @@ class _AllDiagState extends State<AllDiag> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('les Diagnostics'),
+        title: const Text('les Diagnostics'),
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
-                  return HomePage();
+                  return const HomePage();
                 },
               ),
             );
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: isLoading == false
           ? SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   GestureDetector(
@@ -82,7 +87,7 @@ class _AllDiagState extends State<AllDiag> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return EditDiag();
+                            return const EditDiag();
                           },
                         ),
                       );
@@ -94,7 +99,7 @@ class _AllDiagState extends State<AllDiag> {
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.grey,
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text('ajout un diagnostics'),
                       ),
                     ),
@@ -116,11 +121,11 @@ class _AllDiagState extends State<AllDiag> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.4,
                   ),
-                  CircularProgressIndicator(),
-                  SizedBox(
+                  const CircularProgressIndicator(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Chargement...'),
+                  const Text('Chargement...'),
                 ],
               ),
             ),

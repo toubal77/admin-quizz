@@ -36,6 +36,7 @@ class _AllQuestionsState extends State<AllQuestions> {
       );
       final response = await http.get(url);
       if (response.statusCode == 200) {
+        // ignore: avoid_print
         print('seccus get questions');
         final data = json.decode(response.body)["questions"];
         setState(() {
@@ -44,11 +45,15 @@ class _AllQuestionsState extends State<AllQuestions> {
           }
         });
       } else {
+        // ignore: avoid_print
         print('field get questions');
+        // ignore: avoid_print
         print('Response status: ${response.statusCode}');
       }
     } catch (e) {
+      // ignore: avoid_print
       print('field to try get questions');
+      // ignore: avoid_print
       print(e.toString());
     }
     setState(() {
@@ -60,25 +65,25 @@ class _AllQuestionsState extends State<AllQuestions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Questions / reponses'),
+        title: const Text('Questions / reponses'),
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
-                  return HomePage();
+                  return const HomePage();
                 },
               ),
             );
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: isLoading == false
           ? SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   GestureDetector(
@@ -86,7 +91,7 @@ class _AllQuestionsState extends State<AllQuestions> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return EditQuestions();
+                            return const EditQuestions();
                           },
                         ),
                       );
@@ -98,7 +103,7 @@ class _AllQuestionsState extends State<AllQuestions> {
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.grey,
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text('ajout une question'),
                       ),
                     ),
@@ -136,11 +141,11 @@ class _AllQuestionsState extends State<AllQuestions> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.4,
                   ),
-                  CircularProgressIndicator(),
-                  SizedBox(
+                  const CircularProgressIndicator(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Chargement...'),
+                  const Text('Chargement...'),
                 ],
               ),
             ),
@@ -204,6 +209,7 @@ class _AllQuestionsState extends State<AllQuestions> {
                 Navigator.of(context)
                     .pushNamed(EditQuestions.screenName, arguments: quest);
 
+                // ignore: avoid_print
                 print('edit');
               },
             );

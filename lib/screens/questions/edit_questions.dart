@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 class EditQuestions extends StatefulWidget {
   static const screenName = "EditQuestions";
+
+  const EditQuestions({Key? key}) : super(key: key);
   @override
   _EditQuestionsState createState() => _EditQuestionsState();
 }
@@ -91,7 +93,7 @@ class _EditQuestionsState extends State<EditQuestions> {
         value: item,
         child: Text(
           item,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -101,7 +103,7 @@ class _EditQuestionsState extends State<EditQuestions> {
         value: item,
         child: Text(
           item,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -111,19 +113,19 @@ class _EditQuestionsState extends State<EditQuestions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit questions'),
+        title: const Text('Edit questions'),
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) {
-                  return AllQuestions();
+                  return const AllQuestions();
                 },
               ),
             );
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: isLoading == false
@@ -134,13 +136,13 @@ class _EditQuestionsState extends State<EditQuestions> {
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text('annee'),
+                      const Text('annee'),
                       Container(
                         width: 300,
-                        margin: EdgeInsets.all(12),
+                        margin: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: Colors.black, width: 2),
@@ -150,7 +152,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                             value: value,
                             isExpanded: true,
                             iconSize: 36,
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_drop_down,
                               color: Colors.black,
                             ),
@@ -162,13 +164,13 @@ class _EditQuestionsState extends State<EditQuestions> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text('Semestre'),
+                      const Text('Semestre'),
                       Container(
                         width: 300,
-                        margin: EdgeInsets.all(12),
+                        margin: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: Colors.black, width: 2),
@@ -178,7 +180,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                             value: value1,
                             isExpanded: true,
                             iconSize: 36,
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_drop_down,
                               color: Colors.black,
                             ),
@@ -190,11 +192,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'module'),
+                        decoration: const InputDecoration(labelText: 'module'),
                         textInputAction: TextInputAction.next,
                         controller: moduleController,
                         validator: (value) {
@@ -207,11 +209,12 @@ class _EditQuestionsState extends State<EditQuestions> {
                           moduleController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'questions'),
+                        decoration:
+                            const InputDecoration(labelText: 'questions'),
                         textInputAction: TextInputAction.next,
                         controller: questionsController,
                         validator: (value) {
@@ -224,11 +227,12 @@ class _EditQuestionsState extends State<EditQuestions> {
                           questionsController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'reponse1'),
+                        decoration:
+                            const InputDecoration(labelText: 'reponse1'),
                         textInputAction: TextInputAction.next,
                         controller: reponse1Controller,
                         validator: (value) {
@@ -241,11 +245,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                           reponse1Controller.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       CheckboxListTile(
-                        title: Text("couche si la reponse 1 est correct"),
+                        title: const Text("couche si la reponse 1 est correct"),
                         value: checkedValue1,
                         onChanged: (newValue) {
                           setState(() {
@@ -254,11 +258,12 @@ class _EditQuestionsState extends State<EditQuestions> {
                         },
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'reponse2'),
+                        decoration:
+                            const InputDecoration(labelText: 'reponse2'),
                         textInputAction: TextInputAction.next,
                         controller: reponse2Controller,
                         validator: (value) {
@@ -272,7 +277,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                         },
                       ),
                       CheckboxListTile(
-                        title: Text("couche si la reponse 2 est correct"),
+                        title: const Text("couche si la reponse 2 est correct"),
                         value: checkedValue2,
                         onChanged: (newValue) {
                           setState(() {
@@ -281,14 +286,15 @@ class _EditQuestionsState extends State<EditQuestions> {
                         },
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'reponse3'),
+                        decoration:
+                            const InputDecoration(labelText: 'reponse3'),
                         textInputAction: TextInputAction.next,
                         controller: reponse3Controller,
                         validator: (value) {
@@ -301,11 +307,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                           reponse3Controller.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       CheckboxListTile(
-                        title: Text("couche si la reponse 3 est correct"),
+                        title: const Text("couche si la reponse 3 est correct"),
                         value: checkedValue3,
                         onChanged: (newValue) {
                           setState(() {
@@ -314,11 +320,12 @@ class _EditQuestionsState extends State<EditQuestions> {
                         },
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'reponse4'),
+                        decoration:
+                            const InputDecoration(labelText: 'reponse4'),
                         textInputAction: TextInputAction.next,
                         controller: reponse4Controller,
                         validator: (value) {
@@ -331,11 +338,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                           reponse4Controller.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       CheckboxListTile(
-                        title: Text("couche si la reponse 4 est correct"),
+                        title: const Text("couche si la reponse 4 est correct"),
                         value: checkedValue4,
                         onChanged: (newValue) {
                           setState(() {
@@ -344,11 +351,12 @@ class _EditQuestionsState extends State<EditQuestions> {
                         },
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'reponse5'),
+                        decoration:
+                            const InputDecoration(labelText: 'reponse5'),
                         textInputAction: TextInputAction.next,
                         controller: reponse5Controller,
                         validator: (value) {
@@ -362,11 +370,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       CheckboxListTile(
-                        title: Text("couche si la reponse 5 est correct"),
+                        title: const Text("couche si la reponse 5 est correct"),
                         value: checkedValue5,
                         onChanged: (newValue) {
                           setState(() {
@@ -375,11 +383,12 @@ class _EditQuestionsState extends State<EditQuestions> {
                         },
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
-                        decoration: InputDecoration(labelText: 'explication'),
+                        decoration:
+                            const InputDecoration(labelText: 'explication'),
                         textInputAction: TextInputAction.next,
                         controller: explicationController,
                         validator: (value) {
@@ -392,7 +401,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                           explicationController.text = value!;
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       GestureDetector(
@@ -435,15 +444,18 @@ class _EditQuestionsState extends State<EditQuestions> {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return AllQuestions();
+                                        return const AllQuestions();
                                       },
                                     ),
                                   );
                                 } else {
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
+                                // ignore: avoid_print
                                 print('field create module');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
@@ -478,7 +490,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return AllQuestions();
+                                        return const AllQuestions();
                                       },
                                     ),
                                   );
@@ -492,16 +504,19 @@ class _EditQuestionsState extends State<EditQuestions> {
                                       ),
                                     ),
                                   );
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content:
                                         Text('field create / update question'),
                                   ),
                                 );
+                                // ignore: avoid_print
                                 print('field create module');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
@@ -509,12 +524,14 @@ class _EditQuestionsState extends State<EditQuestions> {
                             }
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content:
                                     Text('field try create / update question'),
                               ),
                             );
+                            // ignore: avoid_print
                             print('field to try create module');
+                            // ignore: avoid_print
                             print(e.toString());
                           }
                           setState(() {
@@ -531,12 +548,12 @@ class _EditQuestionsState extends State<EditQuestions> {
                               color: Colors.grey,
                             ),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text('Confirme'),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                       if (idController.text != 'null')
@@ -560,7 +577,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) {
-                                        return AllQuestions();
+                                        return const AllQuestions();
                                       },
                                     ),
                                   );
@@ -574,26 +591,31 @@ class _EditQuestionsState extends State<EditQuestions> {
                                       ),
                                     ),
                                   );
+                                  // ignore: avoid_print
                                   print(json.decode(response.body)['message']);
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('field delete question'),
                                   ),
                                 );
+                                // ignore: avoid_print
                                 print('field delete question');
+                                // ignore: avoid_print
                                 print(
                                   'Response status: ${response.statusCode}',
                                 );
                               }
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                   content: Text('field try delete question'),
                                 ),
                               );
+                              // ignore: avoid_print
                               print('field to try delete question');
+                              // ignore: avoid_print
                               print(e.toString());
                             }
                             setState(() {
@@ -610,7 +632,7 @@ class _EditQuestionsState extends State<EditQuestions> {
                                 color: Colors.grey,
                               ),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Text('Delete'),
                             ),
                           ),
@@ -626,11 +648,11 @@ class _EditQuestionsState extends State<EditQuestions> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.4,
                   ),
-                  CircularProgressIndicator(),
-                  SizedBox(
+                  const CircularProgressIndicator(),
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text('Chargement...'),
+                  const Text('Chargement...'),
                 ],
               ),
             ),

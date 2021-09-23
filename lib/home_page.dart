@@ -15,13 +15,13 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
-        title: Text('Admin medQUIZZ'),
+        title: const Text('Admin medQUIZZ'),
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {
             SystemNavigator.pop();
           },
-          child: Icon(Icons.exit_to_app),
+          child: const Icon(Icons.exit_to_app),
         ),
       ),
       body: Center(
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AllDiag(),
+                    builder: (context) => const AllDiag(),
                   ),
                 );
               },
@@ -43,17 +43,17 @@ class HomePage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Center(child: Text('all Diagnostics')),
+                child: const Center(child: Text('all Diagnostics')),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AllSuggestions(),
+                    builder: (context) => const AllSuggestions(),
                   ),
                 );
               },
@@ -64,17 +64,17 @@ class HomePage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Center(child: Text('all Suggestions')),
+                child: const Center(child: Text('all Suggestions')),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AllUsers(),
+                    builder: (context) => const AllUsers(),
                   ),
                 );
               },
@@ -85,17 +85,17 @@ class HomePage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Center(child: Text('all Users')),
+                child: const Center(child: Text('all Users')),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AllQuestions(),
+                    builder: (context) => const AllQuestions(),
                   ),
                 );
               },
@@ -106,17 +106,17 @@ class HomePage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Center(child: Text('all questions')),
+                child: const Center(child: Text('all questions')),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => AllModules(),
+                    builder: (context) => const AllModules(),
                   ),
                 );
               },
@@ -127,7 +127,7 @@ class HomePage extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Center(child: Text('all modules')),
+                child: const Center(child: Text('all modules')),
               ),
             ),
           ],

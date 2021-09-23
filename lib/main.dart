@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
       routes: {
         EditModult.screenName: (context) => const EditModult(),
-        EditQuestions.screenName: (context) => EditQuestions(),
+        EditQuestions.screenName: (context) => const EditQuestions(),
         EditDiag.screenName: (context) => const EditDiag(),
       },
     );

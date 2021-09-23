@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AllSuggestions extends StatelessWidget {
+  const AllSuggestions({Key? key}) : super(key: key);
+
   // List<Suggestions>? suggestions = [];
   // @override
   // void initState() {
@@ -44,12 +46,12 @@ class AllSuggestions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Les Suggestions'),
+        title: const Text('Les Suggestions'),
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: StreamBuilder<QuerySnapshot>(
@@ -60,8 +62,8 @@ class AllSuggestions extends StatelessWidget {
               itemCount: int.parse(snapshot.data.docs!.length.toString()),
               itemBuilder: (context, index) {
                 return Container(
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(7),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -75,11 +77,11 @@ class AllSuggestions extends StatelessWidget {
                       Text(
                         'username: ${snapshot.data.docs[index]['username']}',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 3,
                       ),
                       Text('time: ${snapshot.data.docs[index]['time']}'),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text('message: ${snapshot.data.docs[index]['message']}'),
@@ -89,7 +91,7 @@ class AllSuggestions extends StatelessWidget {
               },
             );
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },

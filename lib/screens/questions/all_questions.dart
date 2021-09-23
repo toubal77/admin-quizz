@@ -31,14 +31,15 @@ class _AllQuestionsState extends State<AllQuestions> {
     });
     questions!.clear();
     try {
-      var url = Uri.parse(
-          'https://rayanzinotblans.000webhostapp.com/get_question.php');
-      var response = await http.get(url);
+      final url = Uri.parse(
+        'https://rayanzinotblans.000webhostapp.com/get_question.php',
+      );
+      final response = await http.get(url);
       if (response.statusCode == 200) {
         print('seccus get questions');
         final data = json.decode(response.body)["questions"];
         setState(() {
-          for (Map<String, dynamic> i in data) {
+          for (final Map<String, dynamic> i in data) {
             questions!.add(Questions.fromJson(i));
           }
         });
@@ -61,16 +62,17 @@ class _AllQuestionsState extends State<AllQuestions> {
       appBar: AppBar(
         title: Text('Questions / reponses'),
         leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return HomePage();
-                  },
-                ),
-              );
-            },
-            child: Icon(Icons.arrow_back)),
+          onTap: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) {
+                  return HomePage();
+                },
+              ),
+            );
+          },
+          child: Icon(Icons.arrow_back),
+        ),
       ),
       body: isLoading == false
           ? SingleChildScrollView(
@@ -82,9 +84,11 @@ class _AllQuestionsState extends State<AllQuestions> {
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) {
-                          return EditQuestions();
-                        }),
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return EditQuestions();
+                          },
+                        ),
                       );
                     },
                     child: Container(
@@ -102,25 +106,26 @@ class _AllQuestionsState extends State<AllQuestions> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
-                        columns: getColumns([
-                          'id',
-                          'annee',
-                          'semester',
-                          'module',
-                          'questions',
-                          'reponse 1',
-                          'repo1',
-                          'reponse 2',
-                          'repo2',
-                          'reponse 3',
-                          'repo3',
-                          'reponse 4',
-                          'repo4',
-                          'reponse 5',
-                          'repo5',
-                          'explication',
-                        ]),
-                        rows: getRows(questions!)),
+                      columns: getColumns([
+                        'id',
+                        'annee',
+                        'semester',
+                        'module',
+                        'questions',
+                        'reponse 1',
+                        'repo1',
+                        'reponse 2',
+                        'repo2',
+                        'reponse 3',
+                        'repo3',
+                        'reponse 4',
+                        'repo4',
+                        'reponse 5',
+                        'repo5',
+                        'explication',
+                      ]),
+                      rows: getRows(questions!),
+                    ),
                   ),
                 ],
               ),
@@ -178,7 +183,7 @@ class _AllQuestionsState extends State<AllQuestions> {
               Text('$cell'),
               showEditIcon: showEditIcon,
               onTap: () {
-                Map<String, String>? quest = {
+                final Map<String, String> quest = {
                   'id': question.id,
                   'annee': question.annee,
                   'semestre': question.semestre,

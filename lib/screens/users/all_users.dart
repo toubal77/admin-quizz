@@ -46,10 +46,11 @@ class AllUsers extends StatelessWidget {
       appBar: AppBar(
         title: Text('tous les utilisateurs'),
         leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Icon(Icons.arrow_back)),
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Icon(Icons.arrow_back),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('users').snapshots(),

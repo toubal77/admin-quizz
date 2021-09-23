@@ -46,10 +46,11 @@ class AllSuggestions extends StatelessWidget {
       appBar: AppBar(
         title: Text('Les Suggestions'),
         leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Icon(Icons.arrow_back)),
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Icon(Icons.arrow_back),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('suggestion').snapshots(),
